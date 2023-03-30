@@ -60,9 +60,9 @@ module.exports.getSomeUsers = async (req, res) => {
 
 module.exports.suspend = async (req, res) => {
   let response = {
-    success: true,
+    success: false,
     message: "",
-    errMessage: "",
+    errMessage: "" ,
     result: "",
   };
   const { id } = req.body;

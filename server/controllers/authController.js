@@ -133,8 +133,6 @@ module.exports.refreshToken = async (req, res) => {
   try {
     const payload = verify(token, process.env.REFRESH_TOKEN);
     const user = await User.findOne({ _id: payload.userId })
-      .select("name profile email roleModel role isEventHead")
-      .populate({ path: "role", model: payload.roleModel, select: "slug" });
     if (!user) {
       response.message = "user not found";
       return res.send(response);

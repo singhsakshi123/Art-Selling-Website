@@ -78,7 +78,7 @@ function Home() {
             {users &&
               users.map((user, key) => (
                 <Col
-                  lg="3"
+                  lg="4"
                   md="6"
                   sm="12"
                   xs="8"

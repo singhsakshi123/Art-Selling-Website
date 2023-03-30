@@ -39,9 +39,25 @@ const UpdateCardPopUp = ({ setShowModal, product, counts }) => {
             type="number"
             placeholder="Enter quantity"
             value={count}
+            // onChange={(e) => {
+            // setCount(e.target.value);
             onChange={(e) => {
-              setCount(e.target.value);
+              if (e.target.value <= 0) {
+                toast.warn("Value Cannot Be Less Than Zero", {
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                });
+              } else if (e.target.value > product.postBy.count) {
+                toast.warn("Count is more than available", {
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                });
+              } else if (
+                !(e.target.value > product.postBy.count) &&
+                !(e.target.value < 0)
+              ) {
+                setCount(e.target.value);
+              }
             }}
+
           />
         </div>
 

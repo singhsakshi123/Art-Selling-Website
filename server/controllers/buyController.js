@@ -185,12 +185,12 @@ module.exports.buyCart = async (req, res) => {
               response.message = "Error In Buying 2";
               return res.status(400).json(response);
             });
-          Post.findOneAndUpdate(
+          Post.findOne(
             { _id: item[i].postBy },
-            {
-              $inc: { count: -item[i].count },
-            },
-            { new: true }
+            // {
+            //   $inc: { count: -item[i].count },
+            // },
+            // { new: true }
           )
             .then(async (data) => {
               if (
@@ -412,7 +412,7 @@ module.exports.isAccepted = async (req, res) => {
       User.findOneAndUpdate(
         { _id: track.postsDetails[i].boughtFrom },
         {
-          $inc: { wallet: track.postsDetails[i].price },
+          $inc: { wallet: track.postsDetails[i].price-10 },
         },
         { new: true }
       ).then((data) => {

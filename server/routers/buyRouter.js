@@ -3,15 +3,15 @@ const router = express.Router();
 const Controller = require("../controllers/buyController");
 const authentication = require("../middleware/Authentication");
 
-router.post("/addtocart", Controller.addToCart);
+router.post("/addtocart", authentication, Controller.addToCart);
 
-router.get("/mycart/:id", Controller.getMyCart);
+router.get("/mycart/:id", authentication, Controller.getMyCart);
 
-router.delete("/deleteItem", Controller.deleteItem);
+router.delete("/deleteItem", authentication, Controller.deleteItem);
 
-router.post("/buyCart", Controller.buyCart);
+router.post("/buyCart", authentication, Controller.buyCart);
 
-router.post("/updateCart", Controller.updateCart);
+router.post("/updateCart", authentication, Controller.updateCart);
 
 router.get(
     "/getTrack",

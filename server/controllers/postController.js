@@ -242,7 +242,7 @@ module.exports.updatePost = async (req, res) => {
 
     res.json({ message: "Post updated successfully", post1 });
     // oldImage != "" &&
-    if (post != oldPost) {
+    if (oldPost != "" && post != oldPost) {
       let imageName = oldPost.split("/");
       let imagePath =
         path.join(__dirname, "../public/images/Posts/") +
